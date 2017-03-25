@@ -66,10 +66,12 @@ class App extends Component {
     return true;
   }
 
+  //on page load, parse config file
   componentDidMount() {
     this.parseCoordinatesFile();
   }
 
+  //calculate distance between two points
   calcDistance(x1, y1, x2, y2) {
     let a = x1 - x2
     let b = y1 - y2
@@ -80,6 +82,10 @@ class App extends Component {
 
   calcResult(e) {
     e.preventDefault();
+    if (!this.state.xVal || !this.state.yVal) {
+      alert('please enter x and y coordinates');
+      return;
+    }
     let xVal = this.state.xVal;
     let yVal = this.state.yVal;
 
